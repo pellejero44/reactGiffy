@@ -1,0 +1,19 @@
+.Gift {
+  border: 1px solid white;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  padding: 32px;
+  width: 100%;
+}
+
+.Gif h4 {
+    margin: 0;
+}
+
+.Gift img {
+  object-fit: contain;
+}
