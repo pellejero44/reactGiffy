@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import GiftsContextProvider from '../context/GiftsContext';
-import getGifts from '../services/getGifts';
+import GiftsContextProvider from 'context/GiftsContext';
+import getGifts from 'services/getGifts';
 
 export function useGifts({ keyword } = { keyword: null }) {
   const { gifts, setGifts } = useContext(GiftsContextProvider);

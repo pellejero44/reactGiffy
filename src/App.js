@@ -15,7 +15,7 @@ function App() {
           <Link to='/search/brasil'>Gifts de brasil</Link>
           <GiftsContextProvider>
             <Route component={Home} path='/' />
-            <Route component={SearchResults} path='/search/:keyword/?' />
+            <Route component={SearchResults} path='/search/:keyword' />
             <Route component={Detail} path='/gif/:id' />
           </GiftsContextProvider>
         </section>

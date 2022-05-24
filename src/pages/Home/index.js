@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'wouter';
-import ListOfGifts from '../../components/ListOfGifts/ListOfGifts';
-import { useGifts } from '../../hooks/useGifts';
-
-const POPULAR_GIFTS = ['Matrix', 'Brazil'];
+import { useLocation } from 'wouter';
+import ListOfGifts from 'components/ListOfGifts/ListOfGifts';
+import { useGifts } from 'hooks/useGifts';
+import LazyTrending from 'components/TrendingSearches';
 
 export default function Home() {
   const [keyword, setKeyword] = useState('');
@@ -33,13 +32,7 @@ export default function Home() {
       <h3 className='App-title'>Last search</h3>
       <ListOfGifts gifts={gifts} />
       <h3 className='App-title'>The most popular gifts</h3>
-      <ul>
-        {POPULAR_GIFTS.map((popularGift) => (
-          <li key={popularGift}>
-            <Link to={`/search/${popularGift}`}> Gifts of {popularGift}</Link>
-          </li>
-        ))}
-      </ul>
+      {<LazyTrending />}
     </>
   );
 }
