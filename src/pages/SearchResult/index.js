@@ -4,7 +4,14 @@ import { useGifts } from 'hooks/useGifts';
 
 export default function SearchResults({ params }) {
   const { keyword } = params;
-  const { loading, gifts } = useGifts({ keyword });
+  const { loading, gifts, setPage } = useGifts({ keyword });
 
-  return <>{loading ? <Spinner /> : <ListOfGifts gifts={gifts} />}</>;
+  const handleNextPage = () => setPage((prevPage) => prevPage + 1);
+
+  return (
+    <>
+      {loading ? <Spinner /> : <ListOfGifts gifts={gifts} />} <br />
+      <button onClick={handleNextPage}>Next Page</button>
+    </>
+  );
 }
