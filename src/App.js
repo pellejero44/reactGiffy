@@ -17,6 +17,7 @@ function App() {
             <Route component={Home} path='/' />
             <Route component={SearchResults} path='/search/:keyword' />
             <Route component={Detail} path='/gif/:id' />
+            <Route component={() => <h1>404 Error :(</h1>} path='/404' />
           </GiftsContextProvider>
         </section>
       </div>

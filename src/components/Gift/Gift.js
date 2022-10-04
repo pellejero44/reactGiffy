@@ -1,6 +1,7 @@
+import React from 'react';
 import { Link } from 'wouter';
 
-export default function Gift({ title, id, url }) {
+function Gift({ title, id, url }) {
   return (
     <Link to={`/gif/${id}`} className='Gif-link'>
       <div className='Gift'>
@@ -10,3 +11,4 @@ export default function Gift({ title, id, url }) {
     </Link>
   );
 }
+export default React.memo(Gift);

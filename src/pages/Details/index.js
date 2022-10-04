@@ -1,10 +1,32 @@
 import Gift from 'components/Gift/Gift';
-import GiftsContext from 'context/GiftsContext';
-import useGlobalGifts from 'hooks/useGlobalGifts';
+import Spinner from 'components/Spinner';
+import useSingleGift from 'hooks/useSingleGift';
+import useSEO from 'hooks/useSEO';
+import { Redirect } from 'wouter';
+import { Helmet } from 'react-helmet';
 
 export default function Detail({ params }) {
-  const gifts = useGlobalGifts(GiftsContext);
-  const gift = gifts.find((singleGift) => singleGift.id === params.id);
+  const { gift, isLoading, isError } = useSingleGift({ id: params.id });
+  const title = gift ? gift.title : '';
 
-  return <Gift {...gift} />;
+  if (isLoading)
+    return (
+      <>
+        <Helmet>
+          <title>Loading...</title>
+        </Helmet>
+        <Spinner />
+      </>
+    );
+  if (isError) return <Redirect to='404' />;
+  if (!gift) return null;
+
+  return (
+    <>
+      <Helmet>
+        <title>{title} || Giffy</title>
+      </Helmet>
+      <Gift {...gift} />{' '}
+    </>
+  );
 }

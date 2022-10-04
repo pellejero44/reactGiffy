@@ -9,22 +9,20 @@ export function useGifts({ keyword } = { keyword: null }) {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(INITIAL_PAGE);
   const [loadingNextPage, setLoadingNextPage] = useState(false);
+  const keywordToUse =
+    keyword || localStorage.getItem('lastKeyword') || 'random';
 
   useEffect(
     function () {
       setLoading(true);
-      const keywordToUse =
-        keyword || localStorage.getItem('lastKeyword') || 'random';
 
-      if (keyword)
-        getGifts({ keyword: keywordToUse }).then((gifts) => {
-          setGifts(gifts);
-          setLoading(false);
-          localStorage.setItem('lastKeyword', keyword);
-        });
-    },
-    [keyword, setGifts]
-  );
+      getGifts({ keyword: keywordToUse }).then((gifts) => {
+        setGifts(gifts);
+        console.log('hola')
+        setLoading(false);
+        localStorage.setItem('lastKeyword', keyword);
+      });
+    }, [keyword, keywordToUse, setGifts])
 
   useEffect(
     function () {

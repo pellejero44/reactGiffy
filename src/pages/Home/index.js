@@ -3,6 +3,7 @@ import SearchForm from 'components/SearchForm';
 import LazyTrending from 'components/TrendingSearches';
 import { useGifts } from 'hooks/useGifts';
 import { useCallback } from 'react';
+import { Helmet } from 'react-helmet';
 import { useLocation } from 'wouter';
 
 export default function Home() {
@@ -16,7 +17,10 @@ export default function Home() {
   
 
   return (
-    <>
+    <>    
+     <Helmet>
+        <title> Home| Giffy</title>
+      </Helmet>
       <SearchForm onSubmit={handleSubmit}/>
       <h3 className='App-title'>Last search</h3>
       <ListOfGifts gifts={gifts} />
